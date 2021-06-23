@@ -1,0 +1,101 @@
+
+// i actually came across to this while manish was going through his code where he implemented a public constructor inside a abstract class
+
+// Dont do this 
+public abstract class Jiggle(){
+	int a;
+	int b;
+	public Jiggle(int a, int b){
+	  this.a = a;
+	  this.b = a;
+	}
+
+}
+public class Sprint extends Jiggle{
+	int c;
+
+	Sprint(int a, int b, int c){
+        this.a = a;  // this gives the error
+        this.b = b;  // this gives the error
+        this.c = c;
+
+	}
+
+	public static void main(String[] args){
+        Sprint run = new Sprint(1,2,3);
+
+	}
+}
+
+
+// Do this 
+
+public abstract class Jiggle(){
+	int a;
+	int b;
+	public Jiggle(int a, int b){
+	  this.a = a;
+	  this.b = a;
+	}
+
+}
+public class Sprint extends Jiggle{
+	int c;
+
+	Sprint(int a, int b, int c){
+        super(a,b);
+        this.c = c;
+
+	}
+
+	public static void main(String[] args){
+        Sprint run = new Sprint(1,2,3);
+
+	}
+
+}
+
+// A Curious try to overload main method in java. Is it Possible ?. let's see.
+
+
+Class Test{
+	public static void main(String[] args){
+       System.out.println("1");
+       Test t = new Test();
+       t.main(20);
+	}
+
+	public static void main(int a){
+         System.out.println("2");
+	}
+}
+
+// Verdict = definitely yes, we can have any number of main method , as at compile time JVM look only for the main method having string array as signature argument.
+
+// remember super() constructor has some speciality
+
+class Animal{
+
+     Animal(){
+          System.out.println("we're Animal"+" ");
+     }
+
+}
+
+class Dog extends Animal{
+
+    Dog(){
+      super();
+      System.out.println("and a dog is also a animal");
+    }
+
+  public static void main(String[] args){
+
+      Dog obj = new Dog();
+
+   }  
+
+}
+
+// Super() can be used to invoke immediate parent class. so
+ // output = we're Animal and a dog is also a animal. see
