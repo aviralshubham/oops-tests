@@ -99,3 +99,33 @@ class Dog extends Animal{
 
 // Super() can be used to invoke immediate parent class. so
  // output = we're Animal and a dog is also a animal. see
+ 
+ // this is interesting one to guess, 
+
+public class abc
+{
+    public static int k;
+    public int x, y;
+    static abc()        // a staic constructor must be parameterless, which means we have to call this static constructor which is not possible 
+    {
+        k = 10;  //only static variables can be instantied in static constructor 
+        // x  = 9, y = 0; prohibited throws error if did
+    }
+
+    public abc(int p, int q)
+    {
+
+     // however a nonstatic can instantiate static and non static variable  as well
+        x = p;
+        y = q;
+
+        k = 20;
+
+    }
+    
+}
+public static void main(String[] args){
+	abc obj  = new abc(30, 40);
+}
+
+// 
